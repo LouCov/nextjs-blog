@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Layout, {siteTitle} from '../components/layout';
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts';
-import moment from 'moment'
+import Date from '../components/date';
 
 const IntroductionText = "Hello, I'm Covil. I'm a software enginer and a translator (English/Frensh). You can cantact me on"
 
@@ -27,9 +27,11 @@ const Home = ({ allPostsData, date }) => {
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              <Link href=''>{title}</Link>
+              <Link href={`/posts/${title}`}>{title}</Link>
               <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                <Date />
+              </small>
             </li>
           ))}
         </ul>
@@ -41,12 +43,10 @@ const Home = ({ allPostsData, date }) => {
 export const getStaticProps = async () => {
 
   const allPostsData = await getSortedPostsData()
-  const date = moment().format('MMM d, YYYY').toString()
 
   return {
     props: {
-      allPostsData,
-      date
+      allPostsData
     }
   }
 }
