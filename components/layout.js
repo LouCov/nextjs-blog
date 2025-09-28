@@ -32,7 +32,7 @@ const Layout = ({ children, home }) => {
                     <>
                         <Image
                             priority
-                            src='/images/profile.jpg'
+                            src='https://covillouco.vercel.app/_next/image?url=%2Fimages%2Favatar.jpg&w=640&q=75'
                             className={utilStyles.borderCircle}
                             height={144}
                             width={144}
